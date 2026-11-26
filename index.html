@@ -474,10 +474,14 @@ p{margin:0}
 .aside{font-family:var(--serif);font-size:clamp(18px,1.6vw,22px);color:var(--mist)}
 .audc{gap:10px}
 .audc .q{font-size:clamp(17px,1.4vw,20px)}
-.roots{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(16px,3vw,32px);align-items:stretch}
-.roots .pair{align-self:start;grid-template-columns:repeat(2,minmax(0,1fr))}
-.roots .tile{min-width:0}
-.roots-photo{position:relative;min-height:260px;height:auto}
+/* roots: logos stacked on the left, Charminar on the right. Fixed heights, so the photo can never resize the row */
+.roots{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.1fr);grid-template-rows:clamp(380px,58vh,580px);gap:clamp(14px,2vw,24px);align-items:stretch}
+.roots .pair{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px);height:100%;min-height:0;min-width:0}
+.roots .tile{aspect-ratio:auto;height:100%;min-height:0;min-width:0;overflow:hidden;padding:18px;gap:10px;box-sizing:border-box}
+.roots .tile img,.roots .tile svg{width:auto;height:auto;max-width:62%;max-height:68%;flex:0 1 auto;min-height:0;object-fit:contain}
+.roots .tile svg{height:52%;width:auto}
+.roots .tile.light img{max-width:82%;max-height:84%}
+.roots-photo{position:relative;height:100%;min-height:0;min-width:0}
 .roots-photo img{position:absolute;left:0;top:-9%;width:100%;height:118%;object-fit:cover}
 .cbottom{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:40px;align-items:center}
 /* product */
@@ -510,8 +514,9 @@ p{margin:0}
   .audc .age{font-size:30px}
   .audc .q{font-size:15px}
   .insight b{font-size:19px}
-  .roots{grid-template-columns:1fr}
-  .roots-photo{height:220px;min-height:0}
+  .roots{grid-template-columns:1fr;grid-template-rows:auto 240px}
+  .roots .pair{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:150px;height:auto}
+  .roots-photo{height:240px}
   .story .stage{width:min(290px,66vw)}
   .beats{min-height:96px}
   .anat{grid-template-columns:1fr;grid-template-areas:"big" "c";gap:18px}
