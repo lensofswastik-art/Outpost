@@ -548,6 +548,13 @@ p{margin:0}
   .close .big{font-size:clamp(44px,12vw,64px)}
 }
 
+
+/* keep rounded corners when photos move: overflow+radius alone doesn't clip transformed images in some browsers */
+.photo{clip-path:inset(0 round 22px);-webkit-mask-image:-webkit-radial-gradient(white,black);isolation:isolate}
+.mock-frame{clip-path:inset(0 round 24px);isolation:isolate}
+.pcard .scr{clip-path:inset(0 round calc(var(--w) * .13));isolation:isolate}
+@media (max-width:900px){.mock-frame{clip-path:inset(0 round 16px)}}
+
 /* reduced motion: everything visible */
 .rm .wi,.rm [data-r]{transform:none!important;opacity:1!important}
 </style>
